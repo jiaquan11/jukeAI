@@ -27,6 +27,9 @@ def l2(a, b):
     x = np.asarray(a) - np.asarray(b) # 将向量转换为数组,然后相减,得到一个新的数组,即向量的差值
     return norm(x)#求向量差值的模
 
+model = "text-embedding-3-large"
+dimensions = 128
+
 '''
 将文本转换为向量
 '''
@@ -49,9 +52,9 @@ if __name__ == '__main__':
     #print(f"Total dimensions: {len(vec)}") #输出向量的维度
     #print(f"First 10 dimensions: {vec[:10]}") #输出向量的前10个维度
 
-    query = "国际争端"
+    #query = "国际争端"
     # 且能支持跨语言
-    # query = "global conflicts"
+    query = "global conflicts"
     documents = [
         "联合国就苏丹达尔富尔地区大规模暴力事件发出警告",
         "土耳其、芬兰、瑞典与北约代表将继续就瑞典“入约”问题进行谈判",
@@ -60,8 +63,10 @@ if __name__ == '__main__':
         "我国首次在空间站开展舱外辐射生物学暴露实验",
     ]
 
-    query_vec = get_embeddings([query])[0]
-    doc_vecs = get_embeddings(documents)
+    query_vec = get_embeddings([query], model=model,dimensions=dimensions)[0]
+    doc_vecs = get_embeddings(documents, model=model,dimensions=dimensions)
+    print('向量维度:{}'.format(len(query_vec)))
+    print()
 
     print("Query与自己的余弦距离: {:.2f}".format(cos_sim(query_vec, query_vec)))
     print("Query与Documents的余弦距离:")
