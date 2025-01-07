@@ -26,7 +26,8 @@ class Model(torch.nn.Module):
     def __init__(self):
         super().__init__() #构建Bert模型
         #设计全连接网络，实现二分类任务
-        self.fc = torch.nn.Linear(768, 2) #输入维度为768，输出维度为2,二分类任务
+        self.fc = torch.nn.Linear(768, 2) #输入维度为768，输出维度为2,二分类任务，用于情感分类
+        #self.fc = torch.nn.Linear(768, 8)  # 输入维度为768，输出维度为8,多分类任务，用于多分类评价等
     def forward(self, input_ids, attention_mask,token_type_ids):
         #冻结Bert预训练模型的参数，进行前向传播，让其不参与训练，只训练全连接网络，也就是只训练增量模型
         #使用 torch.no_grad() 冻结 BERT 的参数，让它只作为特征提取器，不参与训练
