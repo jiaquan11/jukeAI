@@ -50,7 +50,7 @@ if __name__ == '__main__':
     print(DEVICE)
     model = Model().to(DEVICE)
     #加载训练好的模型参数
-    model.load_state_dict(torch.load("params/1_bert.pth", map_location=DEVICE))
+    model.load_state_dict(torch.load("params/weibo_best_bert.pth", map_location=DEVICE))
     #开启测试模式
     model.eval()
     for i, (input_ids, attention_mask, token_type_ids, labels) in enumerate(test_loader):

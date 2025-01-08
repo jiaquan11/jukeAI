@@ -2,7 +2,8 @@
 #加载数据和模型，将数据输入模型进行训练，得到输出，根据输出计算损失，把损失丢入优化器优化模型参数,反向传播，更新参数
 
 import torch
-from MyData import MyDataset
+#from MyData import MyDataset
+from MyData02 import MyDataset
 from torch.utils.data import DataLoader
 from net import Model
 from transformers import BertTokenizer, AdamW
@@ -43,7 +44,7 @@ def collate_fn(data):
 train_dataset = MyDataset("train")
 train_loader = DataLoader(
     dataset=train_dataset,
-    batch_size=50,#批次大小，每次训练的数据量
+    batch_size=100,#批次大小，每次训练的数据量
     shuffle=True,#是否打乱数据
     drop_last=True,#是否丢弃最后一个不足一个批次的数据,防止形状出错
     #对加载进来的数据进行编码
@@ -53,7 +54,7 @@ train_loader = DataLoader(
 val_dataset = MyDataset("validation")
 val_loader = DataLoader(
     dataset=val_dataset,
-    batch_size=50,#批次大小，每次训练的数据量
+    batch_size=100,#批次大小，每次训练的数据量
     shuffle=True,#是否打乱数据
     drop_last=True,#是否丢弃最后一个不足一个批次的数据,防止形状出错
     #对加载进来的数据进行编码
@@ -112,16 +113,16 @@ if __name__ == '__main__':
                 val_acc += (out == labels).sum().item()
             val_loss /= len(val_loader)
             val_acc /= len(val_loader)
-            print(f"验证集:loss:{val_loss}, acc:{val_acc}")
+            print(f"验证集 loss:{val_loss}, acc:{val_acc}")
 
             #根据验证集的准确率保存最优模型，根据每一轮验证集的准确率保存最优模型
             #过拟合没法解决，只能防止，就是只能保存最优模型参数，不保存过拟合的参数
             if val_acc > best_val_acc:
                 best_val_acc = val_acc
-                torch.save(model.state_dict(), "params/best_bert.pth")
-                print(f"Epoch:{epoch}:保存最优参数:acc{best_val_acc}")
+                torch.save(model.state_dict(), "params/weibo_best_bert.pth")
+                print(f"Epoch:{epoch},保存最优参数 acc:{best_val_acc}")
 
         #保存最后一轮的训练参数
-        torch.save(model.state_dict(), f"params/last_bert.pth")
-        print(epoch, f"Epoch:{epoch}最后一轮参数保存成功！")
+        torch.save(model.state_dict(), f"params/weibo_last_bert.pth")
+        print(epoch, f"Epoch:{epoch},最后一轮参数保存成功！")
 

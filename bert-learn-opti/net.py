@@ -6,7 +6,7 @@ DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(DEVICE)
 
 #加载预训练模型BERT,并将其加载到设备上,Bert模型是一个特征提取器
-pretrained = BertModel.from_pretrained(r'D:\study\computerStudy\personcode\jukeAI\bert-learn\model\bert-base-chinese\models--bert-base-chinese\snapshots\c30a6ed22ab4564dc1e3b2ecbf6e766b0611a33f').to(DEVICE)
+pretrained = BertModel.from_pretrained(r'D:\study\computerStudy\personcode\jukeAI\bert-learn-opti\model\bert-base-chinese\models--bert-base-chinese\snapshots\c30a6ed22ab4564dc1e3b2ecbf6e766b0611a33f').to(DEVICE)
 print(pretrained)
 
 #定义下游任务(增量模型)
@@ -26,8 +26,8 @@ class Model(torch.nn.Module):
     def __init__(self):
         super().__init__() #构建Bert模型
         #设计全连接网络，实现二分类任务
-        self.fc = torch.nn.Linear(768, 2) #输入维度为768，输出维度为2,二分类任务，用于情感分类
-        #self.fc = torch.nn.Linear(768, 8)  # 输入维度为768，输出维度为8,多分类任务，用于多分类评价等
+        #self.fc = torch.nn.Linear(768, 2) #输入维度为768，输出维度为2,二分类任务，用于情感分类
+        self.fc = torch.nn.Linear(768, 8)  # 输入维度为768，输出维度为8,多分类任务，用于多分类评价等
     def forward(self, input_ids, attention_mask,token_type_ids):
         #冻结Bert预训练模型的参数，进行前向传播，让其不参与训练，只训练全连接网络，也就是只训练增量模型
         #使用 torch.no_grad() 冻结 BERT 的参数，让它只作为特征提取器，不参与训练

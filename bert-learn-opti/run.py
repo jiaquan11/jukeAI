@@ -6,8 +6,9 @@ from transformers import BertTokenizer
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 #从模型中加载分词器
-token = BertTokenizer.from_pretrained(r"D:\study\computerStudy\personcode\jukeAI\bert-learn\model\bert-base-chinese\models--bert-base-chinese\snapshots\c30a6ed22ab4564dc1e3b2ecbf6e766b0611a33f")
-names = ["负向评价", "正向评价"]
+token = BertTokenizer.from_pretrained(r"D:\study\computerStudy\personcode\jukeAI\bert-learn-opti\model\bert-base-chinese\models--bert-base-chinese\snapshots\c30a6ed22ab4564dc1e3b2ecbf6e766b0611a33f")
+#names = ["负向评价", "正向评价"]
+names = ["likes", "disgust", "happiness", "sadness", "anger", "surprise", "fear", "none"]
 
 #加载模型
 model = Model().to(DEVICE)
@@ -38,7 +39,7 @@ def collate_fn(data):
 #需要加载训练好的模型参数
 def test():
     #加载训练好的参数
-    model.load_state_dict(torch.load("params/0_bert.pth", map_location=DEVICE))
+    model.load_state_dict(torch.load("params/weibo_best_bert.pth", map_location=DEVICE))
     #开启测试评估模式
     model.eval()
 

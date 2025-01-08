@@ -12,7 +12,7 @@ from datasets import load_dataset, load_from_disk
 #print(dataset)
 
 #加载缓存目录数据集,情感分析数据集，ChnSentiCorp
-dataset = load_from_disk(r"D:\study\computerStudy\personcode\jukeAI\bert-learn\data\ChnSentiCorp")
+dataset = load_from_disk(r"D:\study\computerStudy\personcode\jukeAI\bert-learn-opti\data\ChnSentiCorp")
 print(dataset)
 
 test_data = dataset["test"]
