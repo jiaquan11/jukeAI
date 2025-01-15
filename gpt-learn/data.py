@@ -4,6 +4,7 @@ class MyDataset(Dataset):
     def __init__(self):
         with open("data/chinese_poems.txt", encoding="utf-8") as f:
             lines = f.readlines()
+        #去除每行数据的前后空格
         lines = [i.strip() for i in lines]
         self.lines = lines
 
