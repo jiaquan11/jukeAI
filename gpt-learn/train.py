@@ -110,7 +110,7 @@ def train(scaler):
     print("权重保存成功")
 
 if __name__ == "__main__":
-    # 初始化梯度缩放器
+    # 初始化梯度缩放器 GradScaler
     scaler = torch.amp.GradScaler('cuda')
     #进行1000个训练周期
     for epoch in range(1000):
