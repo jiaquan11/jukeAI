@@ -23,3 +23,9 @@ Bert分类模型训练，数据集配置优化，全局微调，
 
 7、gpt-learn
 使用GPT预训练模型，主要是古诗词的预训练模型进行训练
+
+8、llama3-learn
+llama3模型的下载本地的使用
+
+9、ollama-learn
+ollama模型的运行框架的学习使用
