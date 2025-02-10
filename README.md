@@ -32,3 +32,6 @@ ollama模型的运行框架的学习使用
 
 10、python-base
 python语法基础
+
+11、pytorch-base
+Pytorch框架的基础学习
