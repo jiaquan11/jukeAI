@@ -35,3 +35,6 @@ python语法基础
 
 11、pytorch-base
 Pytorch框架的基础学习
+
+12、finace-pro:
+金融行业动态风向评估(基于大模型的few shot prompt)
