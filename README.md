@@ -38,3 +38,6 @@ Pytorch框架的基础学习
 
 12、finace-pro:
 金融行业动态风向评估(基于大模型的few shot prompt)
+
+13、langchain-pro
+langchain工具链模块的学习
