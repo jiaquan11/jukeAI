@@ -21,6 +21,6 @@ texts = text_spliter.split_documents(docments)
 # 3. 实例化embedding模型
 embed = QianfanEmbeddingsEndpoint()
 db = FAISS.from_documents(texts, embed)
-retriever = db.as_retriever(search_kwargs={"k": 1})
+retriever = db.as_retriever(search_kwargs={"k": 1}) #k：返回的最近邻文档数
 result = retriever.get_relevant_documents("北京大学什么时候成立的？")
 print(result)
