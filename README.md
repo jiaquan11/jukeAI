@@ -41,3 +41,6 @@ Pytorch框架的基础学习
 
 13、langchain-pro
 langchain工具链模块的学习
+
+14、gpt2-chatbot
+大健康行业智能问诊系统
