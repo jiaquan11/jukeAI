@@ -8,7 +8,7 @@ model = AutoModelForCausalLM.from_pretrained(model_dir)
 tokenizer = AutoTokenizer.from_pretrained(model_dir)
 
 #使用加载的模型和分词器创建生成文本的pipeline
-generator = pipeline('text-generation', model=model, tokenizer=tokenizer)
+generator = pipeline('text-generation', model=model, tokenizer=tokenizer, device='cpu')
 
 #生成文本
 #output = generator("你好，我是一款语言模型，", max_length=50, num_return_sequences=1, truncation=True)

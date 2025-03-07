@@ -7,7 +7,7 @@ model = BertForSequenceClassification.from_pretrained(model_name)
 tokenizer = BertTokenizer.from_pretrained(model_name)
 
 #创建分类 pipeline
-classifier = pipeline("text-classification", model=model, tokenizer=tokenizer)
+classifier = pipeline("text-classification", model=model, tokenizer=tokenizer, device='cpu')
 
 #进行分类
 result = classifier("你好，我是一款语言模型")
