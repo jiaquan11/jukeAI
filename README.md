@@ -44,3 +44,6 @@ langchain工具链模块的学习
 
 14、gpt2-chatbot
 大健康行业智能问诊系统
+
+15、openai-learn
+openai接口的调用
