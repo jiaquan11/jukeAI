@@ -1,6 +1,5 @@
 # jukeAI
 AI大模型学习工程项目
-
 1、RAG-Embeddings
 RAG检索和索引的基本理论和操作，包括文档的切分，向量化，检索等操作
 
@@ -47,3 +46,6 @@ langchain工具链模块的学习
 
 15、openai-learn
 openai接口的调用
+
+16、Chatbody-Pro
+基于openai的多模态项目

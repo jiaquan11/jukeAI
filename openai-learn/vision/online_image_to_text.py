@@ -1,5 +1,6 @@
-from openai import OpenAI
+﻿from openai import OpenAI
 
+#线上图片转换为文字
 client = OpenAI()
 response = client.chat.completions.create(
     model="gpt-4o",

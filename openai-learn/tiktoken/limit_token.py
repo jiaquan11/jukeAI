@@ -55,6 +55,5 @@ def main():
 
         messages.append({"role": "assistant", "content": response})
 
-
 if __name__ == "__main__":
     main()
