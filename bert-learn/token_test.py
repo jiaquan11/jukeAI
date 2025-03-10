@@ -26,7 +26,7 @@ out = token.batch_encode_plus(
 )
 
 #input_ids:就是位置索引，每个词对应的位置索引
-#token_type_ids第一个句子和特殊符号的位置是0，第二个句子的位置是1  ()只针对上下文编码
+#token_type_ids第一个句子和特殊符号的位置是0，第二个句子的位置是1  ()只针对上下文编码(类似循环神经网络),当前大模型不适用(transform有自注意力机制)，全为0，表示只有一个句子，没有上下文
 #special_tokens_mask:特殊符号的位置是1，其余是0
 #print(out)
 for k, v in out.items():

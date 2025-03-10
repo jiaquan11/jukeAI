@@ -1,5 +1,9 @@
 from datasets import load_dataset, load_from_disk
 
+#huggingface的数据集是特有的格式，比如arrow格式，所以不能直接使用pandas读取
+#但是可以使用datasets库的load_dataset方法加载数据集，然后转存为CSV格式，再使用pandas读取
+#huuggingface的加载数据集的接口load_dataset也可以直接加载CSV格式的数据集
+
 #在线加载数据集 (hermes-function-calling-v1数据集，用于函数调用)  (不管本地有没有缓存，都要科学上网，进行下载)
 #dataset = load_dataset(path="NousResearch/hermes-function-calling-v1",split="train")
 #print(dataset)
