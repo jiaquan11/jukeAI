@@ -25,12 +25,17 @@ def collate_fn(data):
     sents = [i[0] for i in data]
     label = [i[1] for i in data]
     #对文本进行编码
+    #将传入的字符串进行编码
     data = token.batch_encode_plus(
         batch_text_or_text_pairs=sents,
+        # 当句子长度大于max_length(上限是model_max_length)时，截断
         truncation=True,
-        max_length=500,
+        max_length=512,
+        # 一律补0到max_length
         padding="max_length",
+        # 可取值为tf,pt,np,默认为list
         return_tensors="pt",
+        # 返回序列长度
         return_length=True,
     )
     input_ids = data["input_ids"]

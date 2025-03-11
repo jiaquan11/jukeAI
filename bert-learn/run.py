@@ -2,6 +2,8 @@ import torch
 from net import Model
 from transformers import BertTokenizer
 
+#模型使用接口(主观评估)
+
 #定义设备信息
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -23,7 +25,7 @@ def collate_fn(data):
     data = token.batch_encode_plus(
         batch_text_or_text_pairs=sents,
         truncation=True,
-        max_length=500,
+        max_length=512,
         padding="max_length",
         return_tensors="pt",
         return_length=True,
@@ -50,7 +52,7 @@ def test():
         input_ids, attention_mask, token_type_ids = collate_fn(data) #对输入文本进行分词编码
         #将数据传入设备中
         input_ids, attention_mask, token_type_ids = input_ids.to(DEVICE), attention_mask.to(DEVICE), token_type_ids.to(DEVICE)
-
+        #将数据输入到模型，得到输出
         with torch.no_grad():
             out = model(input_ids, attention_mask, token_type_ids)
             out = out.argmax(dim=1)
