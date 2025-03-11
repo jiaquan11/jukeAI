@@ -81,7 +81,7 @@ def get_embeddings(texts, model='text-embedding-ada-002', dimensions = None):
 
 class MyVectorDBConnector:
     def __init__(self, collection_name, embedding_fn):
-        #内存模式
+        #内存模式,基于内存形式，容易造成数据丢失
         chroma_client = chromadb.Client(Settings(allow_reset=True))
         #数据持久化
         #chroma_client = chromadb.PersistentClient(path='./chroma')

@@ -24,7 +24,6 @@ def sent_tokenize(input_string):
     # 去掉空字符串
     return [sentence for sentence in sentences if sentence.strip()]
 
-    
 if "__main__" == __name__:
     # 测试关键词提取
     print(to_keywords("小明硕士毕业于中国科学院计算所，后在麻省理工学院深造"))

@@ -3,7 +3,6 @@ from langchain.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from langserve import add_routes
 import uvicorn
-
 app = FastAPI(
   title="LangChain Server",
   version="1.0",
