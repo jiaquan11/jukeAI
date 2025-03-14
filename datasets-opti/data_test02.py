@@ -2,6 +2,8 @@ import pandas as pd
 from imblearn.under_sampling import RandomUnderSampler
 from imblearn.over_sampling import RandomOverSampler
 
+#解决微博数据集的不均衡问题，通过重采样的方式，使得数据集的类别标签均衡
+
 '''
 文本分类数据集的不均衡问题
 需要将数据集中的类别标签进行均衡，

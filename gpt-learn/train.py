@@ -77,7 +77,7 @@ def train(scaler):
         #out = model(**data)  # 前向传播
         #loss = out['loss']  # 获取损失
         #loss.backward()#反向传播
-        #torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)#梯度裁剪
+        #torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)#梯度裁剪，防止梯度爆炸
         #optimizer.step()#更新参数
         #scheduler.step()#更新学习率
 
@@ -87,7 +87,21 @@ def train(scaler):
         #每50个批次输出一次训练信息
         if i % 50 == 0:
             labels = data['labels'][:,1:]#准备标签和输出用于计算准确率
-            out = out['logits'].argmax(dim=2)[:,:-1]#通过logits获取模型的原始输出值
+            #获取模型的原始输出值，选取概率最大的词的索引，logits是模型的原始输出值
+            '''
+            完整作用如下：
+            获取模型的预测 logits：
+            从 out['logits'] 中提取原始未归一化的概率分布。
+            形状为 [batch_size, sequence_length, vocab_size]。
+            取概率最高的预测 token 索引：
+            对 logits 的每个 vocab_size 维度（每个时间步）取 argmax，保留概率最大的 token 索引。
+            结果形状变为 [batch_size, sequence_length]。
+            剪裁掉最后一个预测 token：
+            将每个序列裁剪掉最后一个位置（因为 GPT 的训练标签通常没有对应最后一个 token 的预测）。
+            形状变为 [batch_size, sequence_length-1]。
+            最终，这一行返回的张量 out 是模型针对输入 sequence 的预测 token 索引，且与目标标签（labels）在长度上对齐。
+            '''
+            out = out['logits'].argmax(dim=2)[:,:-1]#通过logits获取模型的原始输出值，选取概率最大的词的索引,并且去掉最后一个词,因为最后一个词是填充的
 
             #移除在数据预处理阶段添加的填充(通常是0)，以便只计算实际数据部分的损失和准确率，避免填充部分对模型性能评估的影响
             select = labels != 0
@@ -97,7 +111,7 @@ def train(scaler):
 
             accuracy = (labels == out).sum().item() / labels.numel() #输入和模型输出的相似度比较
             lr = optimizer.state_dict()['param_groups'][0]['lr'] #获取当前学习率 学习率如果在减少，说明模型在逐步收敛，稳定
-            #相似度只能作为参考，不能作为最终的评价指标，主要是看损失值，看是否在下降
+            #相似度只能作为参考，不能作为最终的评价指标，(生成模型输出没有标准性)主要是看损失值，看是否在下降,表示正常训练
             print(i, loss.item(), lr, accuracy)
 
             #将训练过程中的损失值、学习率和准确率写入TensorBoard
