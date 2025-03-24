@@ -29,23 +29,27 @@ llama3模型的下载本地的使用
 9、ollama-learn
 ollama模型的运行框架的学习使用
 
-10、python-base
+10、LLamaIndex-learn
+LlamaIndex框架的学习使用
+---------------------------------
+
+11、python-base
 python语法基础
 
-11、pytorch-base
+12、pytorch-base
 Pytorch框架的基础学习
 
-12、finace-pro:
+13、finace-pro:
 金融行业动态风向评估(基于大模型的few shot prompt)
 
-13、langchain-pro
+14、langchain-pro
 langchain工具链模块的学习
 
-14、gpt2-chatbot
+15、gpt2-chatbot
 大健康行业智能问诊系统
 
-15、openai-learn
+16、openai-learn
 openai接口的调用
 
-16、Chatbody-Pro
+17、Chatbody-Pro
 基于openai的多模态项目
