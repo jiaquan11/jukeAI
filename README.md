@@ -31,25 +31,28 @@ ollama模型的运行框架的学习使用
 
 10、LLamaIndex-learn
 LlamaIndex框架的学习使用
+
+11、rag-law
+基于RAG的法律条文智能助手
 ---------------------------------
 
-11、python-base
+12、python-base
 python语法基础
 
-12、pytorch-base
+13、pytorch-base
 Pytorch框架的基础学习
 
-13、finace-pro:
+14、finace-pro:
 金融行业动态风向评估(基于大模型的few shot prompt)
 
-14、langchain-pro
+15、langchain-pro
 langchain工具链模块的学习
 
-15、gpt2-chatbot
+16、gpt2-chatbot
 大健康行业智能问诊系统
 
-16、openai-learn
+17、openai-learn
 openai接口的调用
 
-17、Chatbody-Pro
+18、Chatbody-Pro
 基于openai的多模态项目
