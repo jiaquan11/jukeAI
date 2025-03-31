@@ -34,6 +34,9 @@ LlamaIndex框架的学习使用
 
 11、rag-law
 基于RAG的法律条文智能助手
+
+12、wakeup-pro
+基于pytorch的语音唤醒系统
 ---------------------------------
 
 12、python-base
