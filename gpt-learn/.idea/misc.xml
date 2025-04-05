@@ -3,4 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="huggingface-learn" />
   </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="base-learn" project-jdk-type="Python SDK" />
 </project>
