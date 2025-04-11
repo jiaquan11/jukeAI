@@ -37,6 +37,9 @@ LlamaIndex框架的学习使用
 
 12、wakeup-pro
 基于pytorch的语音唤醒系统
+
+13、Distillation-demo
+大模型知识蒸馏的代码示例
 ---------------------------------
 
 12、python-base
